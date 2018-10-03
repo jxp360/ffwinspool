@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<p> Welcome {{ user.username }}
+
+{% else %}
+
+<a href="{% url 'django.contrib.auth.views.login' %}">Please Login</a><br>
+Not Yet a User?
+
+{% endif %}
+
+{% endblock %}
+

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+      {% if form.errors %}
+      <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+
+          <form class="form form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+            {% csrf_token %}
+            {% bootstrap_form form layout="horizontal" %}
+
+            <div class="form-group">
+              <div class="col-xs-offset-1 col-xs-3">
+                <a class="btn btn-link" href="{% url 'django.contrib.auth.views.password_reset' %}?">
+                  Forgot Password?
+                </a>
+              </div>
+              <div class="col-xs-offset-9">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </div>
+            <input type="hidden" name="next" value="{{ next }}" />
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</div>
+{% endblock %}
+

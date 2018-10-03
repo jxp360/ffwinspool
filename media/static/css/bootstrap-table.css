@@ -1,0 +1,81 @@
+.table-scroll {
+    width: 100%;
+    overflow: auto;
+}
+
+.table-scroll > thead,
+.table-scroll > tbody,
+.table-scroll > thead > tr,
+.table-scroll > tbody > tr,
+.table-scroll > thead > tr > th,
+.table-scroll > tbody > tr > td {
+    display: block;
+}
+
+.table-scroll > tbody > tr:after,
+.table-scroll > thead > tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.table-scroll > tbody {
+    overflow-y: auto;
+    height: 150px;
+}
+
+.pick-table-scroll > tbody > tr > td,
+.pick-table-scroll > thead > tr > th {
+    width: calc(100% / 5);
+    float: left;
+}
+
+.table-scroll > thead > tr {
+  width: calc(100% - 17px);
+}
+
+.table-scroll > thead > tr > th {
+  cursor: pointer;
+}
+.table-scroll > tbody > tr > td {
+  cursor: default;
+}
+
+.table-highlight {
+    color: red;
+}
+
+.dropdown-menu {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.table > tbody {
+  color: darkgrey;
+  border-bottom: 1px solid darkgrey;
+}
+.table > thead {
+  border-bottom: 1px solid white;
+}
+.table > tbody > tr > td > strong {
+  color: #ffffff;
+}
+.table > tbody > tr > td > em {
+  color: #ffffff;
+}
+.deemphasis {
+  color: darkgrey;
+  font-style: italic;
+  /*font-weight: normal;*/
+}
+
+.picks-summary-title {
+  padding-top: 20px;
+}
+
+.picks-summary-position {
+  color: darkgrey;
+  font-style: italic;
+}

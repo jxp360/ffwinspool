@@ -1,7 +1,6 @@
 from django.http import HttpResponse
 from django.template import Context
-from django.shortcuts import render,render_to_response,RequestContext, get_object_or_404
-from django.core.urlresolvers import reverse
+from django.shortcuts import render,render_to_response, get_object_or_404
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login

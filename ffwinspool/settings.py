@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ffwinspool.wsgi.application'
 
+PROJECT_PATH = '/data/workspace/ffwinspool'
+
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
+MEDIA_URL = ''
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_PATH, 'media', 'static'),
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -99,6 +116,17 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+LOGIN_URL = '/winspool/login'
+LOGIN_REDIRECT_URL = '/winspool/summary'
+
+BOOTSTRAP3 = {
+    # Label class to use in horizontal forms
+    'horizontal_label_class': 'col-md-4',
+    # Field class to use in horiozntal forms
+    'horizontal_field_class': 'col-md-8',
+}
 
 
 # Internationalization

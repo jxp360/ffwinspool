@@ -19,13 +19,13 @@
       <div class="panel panel-default">
         <div class="panel-body">
 
-          <form class="form form-horizontal" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+          <form class="form form-horizontal" method="post" action="{% url 'django.contrib.auth.views.LoginView' %}">
             {% csrf_token %}
             {% bootstrap_form form layout="horizontal" %}
 
             <div class="form-group">
               <div class="col-xs-offset-1 col-xs-3">
-                <a class="btn btn-link" href="{% url 'django.contrib.auth.views.password_reset' %}?">
+                <a class="btn btn-link" href="{% url 'django.contrib.auth.views.PasswordResetView' %}?">
                   Forgot Password?
                 </a>
               </div>

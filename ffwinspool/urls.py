@@ -23,7 +23,9 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='main.html'), name='main'),
     #path('winspool/', include('winspool.urls',namespace=("winspool", "winspool"))),
     path('winspool/', include(('winspool.urls', 'winspool'), namespace="winspool")),
-    re_path(r'^winspool/login/$', auth_views.LoginView,{'template_name':"winspool/login.html"}),
-    re_path(r'^winspool/logout/$', auth_views.LogoutView,{'next_page': '/winspool/login/'}),
+    #re_path(r'^winspool/login/$', auth_views.LoginView,{'template_name':"winspool/login.html"}),
+    #re_path(r'^winspool/logout/$', auth_views.LogoutView,{'next_page': '/winspool/login/'}),
+    path('winspool/', include('django.contrib.auth.urls')),
+    #re_path(r'^winspool/logout/$', auth_views.LogoutView,{'next_page': '/winspool/login/'}),
 
 ]

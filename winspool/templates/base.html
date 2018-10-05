@@ -69,6 +69,13 @@
             <i class="fa fa-cog"></i> Logout
           </a>
         </li>
+        {% else %}
+        <li class="">
+          <a href="{% url 'login' %}">
+            <i class="fa fa-cog"></i>
+            <span>Login</span>
+          </a>
+        </li>
         {% endif %}
       </ul>
 

@@ -51,7 +51,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'ffwinspool.urls'
+#ROOT_URLCONF = 'ffwinspool.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATES = [
     {

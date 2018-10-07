@@ -1,0 +1,27 @@
+sudo groupadd --system ffwinspool
+sudo useradd --system --gid ffwinspool --shell /bin/bash --home /opt/ffwinspool ffwinspool
+sudo chown ffwinspool:ffwinspool /opt/ffwinspool
+sudo su - ffwinspool
+virtualenv production
+source venv/bin/activate
+mkdir logs
+git clone into /opt/ffwinspool
+pip install pip --upgrade
+pip install -r requirements
+python manage.py migrate
+python manage.py collectstatic --noinput
+vi /opt/ffwinspool/gunicorn_start
+chmod u+x gunicorn_start
+mkdir run
+sudo vim /etc/systemd/system/gunicorn.service
+sudo systemctl start gunicorn
+sudo systemctl enable gunicorn
+sudo vim /etc/yum.repos.d/nginx.repo
+sudo yum -y install nginx
+sudo semanage permissive -a httpd_t
+cd /etc/nginx/conf.d
+sudo rm default.conf
+sudo vim ffwinspool.conf
+sudo systemctl start nginx
+sudo systemctl enable nginx
+

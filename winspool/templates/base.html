@@ -48,12 +48,17 @@
 
     {% if user.is_authenticated %}
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <!--<div>-->
       <ul class="nav navbar-nav collapse navbar-collapse navbar-responsive-collapse" id="navbar-ex1-collapse">
         <li class="{% block link_summary_class %}{% endblock %}">
           <a href="{% url 'winspool:summary' %}">
             <i class="fa fa-bolt"></i>
             <span>Summary</span>
+          </a>
+        </li>
+        <li class="{% block link_summarydetail_class %}{% endblock %}">
+          <a href="{% url 'winspool:details' %}">
+            <i class="fa fa-bolt"></i>
+            <span>Details</span>
           </a>
         </li>
       </ul>
@@ -86,7 +91,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      {% block content %}
+      {% block result_content %}
       {% endblock %}
     </div>
   </div>

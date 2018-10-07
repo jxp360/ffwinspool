@@ -121,6 +121,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LOGIN_URL = '/winspool/login'
 LOGIN_REDIRECT_URL = '/winspool/summary'
+#LOGOUT_REDIRECT_URL = '/winspool/login'
+
 
 BOOTSTRAP3 = {
     # Label class to use in horizontal forms

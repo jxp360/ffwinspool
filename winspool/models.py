@@ -57,7 +57,12 @@ class Team(models.Model):
         return retwins
 
     def weekWins(self, weeknum):
-        week = Week.objects.filter(player=self.player).filter(week=weeknum)[0]
+        weeks = Week.objects.filter(player=self.player).filter(week=weeknum)
+        week = None
+        if len(weeks) != 0:
+            week = weeks[0]
+        else:
+            return 0
         if self.name in week.winning_teams.split(","):
             return 1
         else:

@@ -39,7 +39,7 @@ teams1 = {'ARI': 'Arizona Cardinals',
           'TB': 'Tampa Bay Buccaneers',
           'TEN': 'Tennessee Titans',
           'WAS': 'Washington Redskins',
-          'LAR': 'Los Angeles Rams',
+          'LA': 'Los Angeles Rams',
           'LAC': 'Los Angeles Chargers'
           }
 
@@ -50,12 +50,12 @@ if __name__ == "__main__":
     players = [("Jake Christie", "", "NE", "CIN", "NYG", 1, 20, 26),
                ("Jeff Pfeiffenberger", "", "PHI", "BAL", "TB", 2, 16, 29),
                ("Rich Christie", "", "PIT", "KC", "NYJ", 3, 13, 30),
-               ("Rich Christie, Jr", "", "GB", "SF", "ARI", 4, 18, 25),
-               ("Bill Christie III", "", "LAR", "TEN", "WAS", 5, 15, 27),
+               ("Rich Christie, Jr", "", "GB", "DEN", "ARI", 4, 18, 25),
+               ("Bill Christie III", "", "LA", "TEN", "WAS", 5, 15, 27),
                ("Nick Christie", "", "MIN", "OAK", "IND", 6, 19, 22),
                ("Bill Christie, Jr", "", "ATL", "HOU", "MIA", 7, 11, 28),
                ("Steve Christie", "", "NO", "DAL", "SEA", 8, 17, 21),
-               ("Alex Tamburino", "", "LAC", "DEN", "CHI", 9, 14, 23),
+               ("Alex Tamburino", "", "LAC", "SF", "CHI", 9, 14, 23),
                ("Craig Miller", "", "JAC", "CAR", "DET", 10, 12, 24)]
 
     overwrite = False

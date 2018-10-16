@@ -2,7 +2,9 @@
 import os, time, sys
 import psycopg2
 sys.path.append("../")
-os.environ['DJANGO_SETTINGS_MODULE'] = 'ffwinspool.settings';
+sys.path.append("ffwinspool")
+print(os.getcwd())
+os.environ['DJANGO_SETTINGS_MODULE'] = 'ffwinspool.settings'
 import django
 django.setup()
 from winspool.models import Player, Week, Team, NFLGame
@@ -20,17 +22,19 @@ def getGames(db, week=None, season=2018):
 
 def updateGame(gid, hteam, ateam, finished, hscore, ascore, week, season):
     update=False
+    game = None
     try:
-        game = NFLGame.objects.get(game_id=gid)
-        print("Found game; checking if it is complete")
-    except: #winspool.models.DoesNotExist:
-        print("Did not find game; adding to db")
+        game = NFLGame.objects.get(game_id=int(gid))
+        print("Found game for week %d in season %d: %s vs %s; checking if complete" % (week, season, game.home_team, game.away_team))
+    except Exception as e: #winspool.models.DoesNotExist:
+        print('Exception: {0}'.format(e))
+        print("Did not find game; adding game_id %d to db" % int(gid))
         update = True
         game = NFLGame()
         game.game_id = int(gid)
         game.home_team = hteam
         game.away_team = ateam
-        print("Setting game for week %d in season %d" % (week, season))
+        print("Setting game for week %d in season %d: %s vs %s" % (week, season, game.home_team, game.away_team))
         game.week = week
         game.year = season
     if game.complete != finished:
@@ -66,6 +70,7 @@ def updatePlayerWeek(db, player=None, week=None, season=2018):
             teams = Team.objects.filter(player=p)
             if teams.count() != 3:
                 print("Error: Player %s does not have 3 teams; they have %d" % (p.name, teams.count()))
+            print("Looking for completed games for %s, %s and %s" % (teams[0].name, teams[1].name, teams[2].name))
             completed_games = NFLGame.objects.filter(week=weeknum,season=season, complete=True).filter(Q(winner=teams[0].name)|Q(winner=teams[1].name)|Q(winner=teams[2].name))
             try:
                 ws = Week.objects.get(player=p, week=weeknum, season=season)
@@ -94,7 +99,7 @@ if __name__ == "__main__":
 
     nfldb = "threeandout.cjftsjpuovni.us-east-1.rds.amazonaws.com"
     db = psycopg2.connect(host=nfldb, database="nfldb", user="nfldb", password="Thr33&0ut!") 
-    NFLGame.objects.all().delete()
+    #NFLGame.objects.all().delete()
     updatePlayerWeek(db, None, None, 2018)
 
     total_weeks = 3

@@ -1,8 +1,9 @@
 #!/bin/bash
 
-source /opt/ffwinspool/.virtualenvs/production/bin/activate
+source /opt/ffwinspool/production/bin/activate
 
-export DJANGO_SETTINGS_MODULE="ffwinpool.settings"
+
+#export DJANGO_SETTINGS_MODULE="ffwinspool.settings"
 
 #refresh our internal databases
 python /opt/ffwinspool/ffwinspool/scripts/update_scores.py "$@" >> /opt/ffwinspool/logs/update.log 2>&1

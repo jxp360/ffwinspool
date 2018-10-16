@@ -5,22 +5,22 @@ DJANGODIR=/opt/ffwinspool/ffwinspool
 USER=ffwinspool
 GROUP=ffwinspool
 WORKERS=3
-BIND=unix:/opt/ffwinsppol/run/gunicorn.sock
+BIND=unix:/opt/ffwinspool/run/gunicorn.sock
 DJANGO_SETTINGS_MODULE=ffwinspool.settings
 DJANGO_WSGI_MODULE=ffwinspool.wsgi
-LOGLEVEL=error
+LOGLEVEL=debug
 
 cd $DJANGODIR
-source production/bin/activate
+source /opt/ffwinspool/production/bin/activate
 
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
 
-exec production/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
+exec /opt/ffwinspool/production/bin/gunicorn ${DJANGO_WSGI_MODULE}:application \
   --name $NAME \
   --workers $WORKERS \
   --user=$USER \
   --group=$GROUP \
   --bind=$BIND \
   --log-level=$LOGLEVEL \
-  --log-file=-
+  --log-file=/opt/ffwinspool/logs/gunicorn.log
